@@ -4,9 +4,14 @@ Jinja2 Documentation:    https://jinja.palletsprojects.com/
 Werkzeug Documentation:  https://werkzeug.palletsprojects.com/
 This file contains the routes for your application.
 """
+import os   
+from app import app, db 
+from app.forms import PropertyForm
+from werkzeug.utils import secure_filename
+from flask import render_template, request, redirect, url_for, flash, session, abort,send_from_directory
+from app.models import AddedProperties
 
-from app import app
-from flask import render_template, request, redirect, url_for
+
 
 
 ###
@@ -23,6 +28,14 @@ def home():
 def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
+
+@app.route("/properties/create", methods=['POST', 'GET'])
+def createProperty():
+    form=PropertyForm()
+    return render_template('createProperty.html',form=form)
+
+@app.route("/properties")
+@app.route("/properties/<propertyid>")
 
 
 ###
