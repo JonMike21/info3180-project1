@@ -16,7 +16,7 @@ class AddedProperties(db.Model):
     
     
 
-    def __init__(self, description, bedroomNum, title, bathroomNum,price,type,location,photo):
+    def __init__(self, title, description, bedroomNum,bathroomNum,price,type,location,photo):
         self.title = title
         self.description = description
         self.bedroomNum = bedroomNum

@@ -32,6 +32,28 @@ def about():
 @app.route("/properties/create", methods=['POST', 'GET'])
 def createProperty():
     form=PropertyForm()
+    if request.method == 'POST':
+        if form.validate_on_submit:
+            
+            title = form.title.data
+            description = form.description.data
+            bedroomNum = form.bedroomNum.data
+            bathroomNum = form.bathroomNum.data
+            price = form.price.data
+            type = form.type.data
+            location = form.location.data
+            photodata = form.photo.data
+            photo = secure_filename(photodata.filename) #Name of photo
+
+            new_property = AddedProperties(title,description,bedroomNum, bathroomNum, price, type, location, photo)
+            db.session.add(new_property)
+            db.session.commit()
+            photodata.save(os.path.join(app.config['UPLOAD_FOLDER'],photo))
+            
+            flash('Property successfully added!', 'success')
+            #redirect(url_for('users'))
+
+
     return render_template('createProperty.html',form=form)
 
 @app.route("/properties")
