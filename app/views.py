@@ -57,7 +57,52 @@ def createProperty():
     return render_template('createProperty.html',form=form)
 
 @app.route("/properties")
+def showProperties():
+    propertyy = db.session.execute(db.select(AddedProperties)).scalars()
+    """
+    prop=AddedProperties.query.all()
+    print("yas")
+    print(prop)
+    print("holla")
+    test=list(propertyy)
+    print(test)
+    get_upload_images()
+    """
+    return render_template('show_properties.html',propertyy=propertyy,photos=get_upload_images()) 
+    #return render_template('show_properties.html',photos=get_upload_images()) 
+    #get_upload_images is doing what i need to do..so rather than calling photos, jus go through the property
+
+    #for loop in the html file  containing both images and property info connect value based on filename and print it 
+    
 @app.route("/properties/<propertyid>")
+
+
+def get_upload_images():
+    dir = os.getcwd()
+    #print(dir)
+    fname=[]
+    for subdir, dirs, files in os.walk(dir + '/uploads'):
+        for file in files:
+            if file.endswith('.jpg') or file.endswith('.png') or file.endswith('.jpeg') or file.endswith('.JPG'):
+                fname.append(file)
+                #print (os.path.join(subdir, file))
+    #print (get_upload_images())
+    
+    #print(file)
+    return fname
+
+@app.route('/uploads/<filename>')
+def get_image(filename):
+    #find a way to not route it
+    """ 
+    test2=send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
+    print("no sah")
+    print(test2)
+    """
+    return send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
+
+
+    
 
 
 ###

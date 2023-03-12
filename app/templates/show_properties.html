@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+<h1 class="page-header">Properties</h1>
+
+<ul class="llist">
+    {% for ppt in propertyy %}
+            <li>
+                <div class="card">
+                    <img src="{{url_for('get_image', filename = ppt.photo )}}" alt="{{ ppt.photo }}">
+                    <p>{{ppt.title}}</p>
+                    <p>{{ppt.location}}</p>
+                    <div class="button_like">
+                        <p>{{ppt.price}}</p>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-primary">View Property</button>
+                </div>
+            </li>
+            
+        {% endfor %}
+
+        
+</ul>
+
+{% endblock %}

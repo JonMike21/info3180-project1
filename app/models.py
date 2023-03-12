@@ -9,7 +9,7 @@ class AddedProperties(db.Model):
     description = db.Column(db.String(1024))
     bedroomNum = db.Column(db.Integer)
     bathroomNum = db.Column(db.Integer)
-    price = db.Column(db.String(80))
+    price = db.Column(db.String(80)) #change to integer
     type = db.Column(db.String(80))
     location = db.Column(db.String(80))
     photo = db.Column(db.String(80))
@@ -44,4 +44,4 @@ class AddedProperties(db.Model):
             return str(self.id)  # python 3 support
 
     def __repr__(self):
-        return '<User %r>' % (self.username)
+        return '<Property %r>' % (self.title)
