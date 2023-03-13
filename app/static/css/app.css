@@ -28,13 +28,6 @@ body {
     height: 250px;
     padding: 0px;
     border-radius: 6px 6px 0 0;
-    
-}
-
-.button_like{
-
-    color: aliceblue;
-    border-radius: 50%;
 }
 
 
@@ -52,10 +45,12 @@ body {
 
 .prop{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     align-items: center;
     box-shadow: 0px 0px 7px 5px rgba(163, 163, 163, 0.53);
     column-gap: 20px;
+    justify-content: center;
+    border-radius: 0px 15px 15px 0px;
 }
 
 .prop-image{
@@ -69,4 +64,55 @@ body {
 
 .prop-details{
     grid-column: 2;
+}
+
+.button {
+    background-color: rgb(20, 183, 166);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 0px 0px 6px 6px;
+    
+}
+
+.button-1{
+    background-color: rgb(20, 183, 166);
+    border: none;
+    color: white;
+    padding: 5px 44px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+    
+}
+
+.price{
+    background-color: rgb(99, 167, 252);
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 60px;   
+}
+
+.type{
+    background-color: rgb(251, 187, 34);
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 60px;
+    
 }

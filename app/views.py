@@ -27,7 +27,7 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="Jon-Michaels Project1")
 
 @app.route("/properties/create", methods=['POST', 'GET'])
 def createProperty():
@@ -51,7 +51,7 @@ def createProperty():
             photodata.save(os.path.join(app.config['UPLOAD_FOLDER'],photo))
             
             flash('Property successfully added!', 'success')
-            redirect(url_for('showProperties'))
+            return redirect(url_for('showProperties'))
 
 
     return render_template('createProperty.html',form=form)
@@ -59,7 +59,7 @@ def createProperty():
 @app.route("/properties")
 def showProperties():
     propertyy = db.session.execute(db.select(AddedProperties)).scalars()
-    return render_template('show_properties.html',propertyy=propertyy,photos=get_upload_images()) 
+    return render_template('show_properties.html',propertyy=propertyy) 
 
     
 @app.route("/properties/<propertyid>")
@@ -68,29 +68,8 @@ def viewProperty(propertyid):
     return render_template('view_property.html',proprrty=proprrty) 
     
 
-
-def get_upload_images():
-    dir = os.getcwd()
-    #print(dir)
-    fname=[]
-    for subdir, dirs, files in os.walk(dir + '/uploads'):
-        for file in files:
-            if file.endswith('.jpg') or file.endswith('.png') or file.endswith('.jpeg') or file.endswith('.JPG'):
-                fname.append(file)
-                #print (os.path.join(subdir, file))
-    #print (get_upload_images())
-    
-    #print(file)
-    return fname
-
 @app.route('/uploads/<filename>')
 def get_image(filename):
-    #find a way to not route it
-    """ 
-    test2=send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
-    print("no sah")
-    print(test2)
-    """
     return send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
 
 
