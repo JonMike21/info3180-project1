@@ -4,23 +4,22 @@
 {% block main %}
 <h1 class="page-header">Properties</h1>
 
-<ul class="llist">
+<div class="llist">
     {% for ppt in propertyy %}
-            <li>
+            <div class="card-space">
                 <div class="card">
                     <img src="{{url_for('get_image', filename = ppt.photo )}}" alt="{{ ppt.photo }}">
-                    <p>{{ppt.title}}</p>
-                    <p>{{ppt.location}}</p>
-                    <div class="button_like">
-                        <p>{{ppt.price}}</p>
+                    <div class="tex">
+                        <h3>{{ppt.title}}</h3> 
+                        
+                    <p class="location"><i class="fa fa-map-marker"></i> {{ppt.location}}</p>
+                    
+                        <p class="price">${{ppt.price}}</p>
                     </div>
-                    <button type="submit" name="submit" class="btn btn-primary">View Property</button>
+                    <a href='{{ url_for("viewProperty", propertyid = ppt.id) }}' class="btn btn-primary">View Property</a>    
                 </div>
-            </li>
-            
-        {% endfor %}
-
-        
-</ul>
+            </div>
+        {% endfor %}      
+</div>
 
 {% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+
+
+<div class="prop">
+    {% for ppt in proprrty %}
+            
+        <div class="prop-image">
+            <img src="{{url_for('get_image', filename = ppt.photo )}}" alt="{{ ppt.photo }}">
+        </div>   
+        
+        <div class="prop-details">
+            <h3>{{ppt.title}}</h3>
+            <p class="price">${{ppt.price}}</p> <p class="type">${{ppt.type}}</p>
+            <p>{{ppt.description}}</p>
+            <p> <i class="fa fa-bed" aria-hidden="true"> </i> {{ ppt.bedroomNum }} Bedrooms      <i class="fa fa-bath" aria-hidden="true"> </i> {{ ppt.bathroomNum }} Bathrooms</p>
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ppt.location}}</p>
+            <button type="submit" name="submit" class="btn btn-primary">Email</button>
+        </div>
+            
+            
+    {% endfor %}
+
+        
+</div>
+
+{% endblock %}

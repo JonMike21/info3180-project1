@@ -2,32 +2,71 @@ body {
     padding-top: 5rem;
 }
 
-img{
-    width: 350px;
-    height:300px;
-    padding: 8px;
-}
+
 
 .llist{
     display: grid;
     grid-template-columns: auto auto auto;
     align-items: center;
+   
 }
 
 .llist li{
     list-style-type: none;
+    
 }
-
+.llist button{
+    color: rgb(20, 183, 166);
+}
 .card {
     width: 350px;
+    box-shadow: 0px 0px 7px 5px rgba(163, 163, 163, 0.53);
 }
 
 .card img{
+    width:349px;
+    height: 250px;
     padding: 0px;
+    border-radius: 6px 6px 0 0;
+    
 }
 
 .button_like{
-    background-color: blue;
+
     color: aliceblue;
     border-radius: 50%;
+}
+
+
+.card-space{
+    padding-bottom: 20px;
+}
+
+.tex{
+    padding-left: 15px;
+}
+
+.location{
+    color: rgb(157, 157, 157);
+}
+
+.prop{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    box-shadow: 0px 0px 7px 5px rgba(163, 163, 163, 0.53);
+    column-gap: 20px;
+}
+
+.prop-image{
+    grid-column: 1;
+}
+
+.prop img{
+    height: 100%;
+    width: 100%;
+}
+
+.prop-details{
+    grid-column: 2;
 }

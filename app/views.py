@@ -51,7 +51,7 @@ def createProperty():
             photodata.save(os.path.join(app.config['UPLOAD_FOLDER'],photo))
             
             flash('Property successfully added!', 'success')
-            #redirect(url_for('users'))
+            redirect(url_for('showProperties'))
 
 
     return render_template('createProperty.html',form=form)
@@ -59,22 +59,14 @@ def createProperty():
 @app.route("/properties")
 def showProperties():
     propertyy = db.session.execute(db.select(AddedProperties)).scalars()
-    """
-    prop=AddedProperties.query.all()
-    print("yas")
-    print(prop)
-    print("holla")
-    test=list(propertyy)
-    print(test)
-    get_upload_images()
-    """
     return render_template('show_properties.html',propertyy=propertyy,photos=get_upload_images()) 
-    #return render_template('show_properties.html',photos=get_upload_images()) 
-    #get_upload_images is doing what i need to do..so rather than calling photos, jus go through the property
 
-    #for loop in the html file  containing both images and property info connect value based on filename and print it 
     
 @app.route("/properties/<propertyid>")
+def viewProperty(propertyid):
+    proprrty = db.session.execute(db.select(AddedProperties).filter_by(id=propertyid)).scalars() #where
+    return render_template('view_property.html',proprrty=proprrty) 
+    
 
 
 def get_upload_images():
