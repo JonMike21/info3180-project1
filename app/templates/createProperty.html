@@ -12,7 +12,6 @@
   {# Add the file upload field as you learnt for Flask-WTF #}
   
   {{ form.csrf_token }}
-
   <div class="form-group mb-3">
     {{ form.title.label(class="form-label") }}
     {{ form.title(class="form-control") }}
@@ -53,6 +52,6 @@
     {{ form.photo(class="form-control") }}
   </div>
 
-  <button type="submit" name="submit" class="button-1">Submit</button>
+  <button type="submit" name="submit" class="btn btn-primary">Add Property</button>
 </form>
 {% endblock %}

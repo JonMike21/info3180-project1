@@ -9,7 +9,7 @@ class AddedProperties(db.Model):
     description = db.Column(db.String(1024))
     bedroomNum = db.Column(db.Integer)
     bathroomNum = db.Column(db.Integer)
-    price = db.Column(db.String(80)) #change to integer
+    price = db.Column(db.Integer) #change to integer
     type = db.Column(db.String(80))
     location = db.Column(db.String(80))
     photo = db.Column(db.String(80))
@@ -26,22 +26,6 @@ class AddedProperties(db.Model):
         self.location = location
         self.photo = photo
 
-
-
-    def is_authenticated(self):
-        return True
-
-    def is_active(self):
-        return True
-
-    def is_anonymous(self):
-        return False
-
-    def get_id(self):
-        try:
-            return unicode(self.id)  # python 2 support
-        except NameError:
-            return str(self.id)  # python 3 support
 
     def __repr__(self):
         return '<Property %r>' % (self.title)
